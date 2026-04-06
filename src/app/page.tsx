@@ -2,6 +2,7 @@ import Link from "next/link";
 import PixelCharacter from "@/components/PixelCharacter";
 import SnsButtons from "@/components/SnsButtons";
 import NavCard from "@/components/NavCard";
+import NpcChat from "@/components/NpcChat";
 
 const navCards = [
   {
@@ -88,6 +89,9 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      {/* NPC 챗봇 */}
+      <NpcChat />
     </div>
   );
 }
