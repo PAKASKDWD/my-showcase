@@ -23,7 +23,7 @@ export default function NavCard({
     <div className={`tooltip-wrapper relative animate-pop-in ${delay}`}>
       <a
         href={href}
-        className="btn-card hover-lift flex items-center gap-3 px-5 py-3 border-3 border-black text-white text-sm md:text-base"
+        className="btn-card hover-lift flex items-center gap-3 px-5 py-4 border-3 border-black shadow-brutal text-white text-sm md:text-base"
         style={{ backgroundColor: color }}
       >
         <span className="btn-icon text-lg">{emoji}</span>

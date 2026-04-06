@@ -7,7 +7,7 @@ export default function AboutPage() {
       <div className="fixed top-0 left-0 right-0 z-50 px-3 py-2 md:px-4 md:py-4">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-4 py-2 border-3 border-black shadow-brutal-sm hover-lift text-sm"
+          className="inline-flex items-center gap-2 px-4 py-2.5 border-3 border-black shadow-brutal-sm hover-lift text-sm min-h-[44px]"
           style={{ backgroundColor: "#fff", color: "#2a1810" }}
         >
           <span>←</span>
@@ -26,7 +26,7 @@ export default function AboutPage() {
         </div>
 
         <div
-          className="border-3 border-black p-6 md:p-8 animate-fade-in-up delay-300"
+          className="border-3 border-black p-6 md:p-8 shadow-brutal animate-fade-in-up delay-300"
           style={{ backgroundColor: "#fff" }}
         >
           <div className="space-y-4 text-base leading-relaxed">

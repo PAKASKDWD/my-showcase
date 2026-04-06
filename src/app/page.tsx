@@ -51,7 +51,7 @@ export default function Home() {
           <div className="animate-fade-in-up delay-100">
             <a
               href="/"
-              className="flex items-center gap-2 px-4 py-2 border-3 border-black shadow-brutal-sm hover-lift text-sm"
+              className="flex items-center gap-2 px-4 py-2.5 border-3 border-black shadow-brutal-sm hover-lift text-sm min-h-[44px]"
               style={{ backgroundColor: "#fff", color: "#2a1810" }}
             >
               <span>🏠</span>
@@ -74,14 +74,14 @@ export default function Home() {
         {/* 타이틀 */}
         <div className="text-center animate-fade-in-up delay-300">
           <h1 className="text-3xl md:text-4xl mb-2">마이 쇼케이스</h1>
-          <p className="text-base md:text-lg opacity-70">
+          <p className="text-base md:text-lg opacity-80">
             내가 만든 것들을 모아놓은 공간
             <span className="typing-cursor" />
           </p>
         </div>
 
         {/* 네비게이션 카드 */}
-        <div className="grid grid-cols-2 gap-3 md:gap-4 mt-4">
+        <div className="grid grid-cols-2 gap-4 md:gap-5 mt-6">
           {navCards.map((card) => (
             <NavCard key={card.title} {...card} />
           ))}
