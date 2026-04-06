@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PixelCharacter from "@/components/PixelCharacter";
 import SnsButtons from "@/components/SnsButtons";
 import NavCard from "@/components/NavCard";
@@ -49,14 +50,14 @@ export default function Home() {
         <div className="flex justify-between items-start">
           {/* 좌측: 홈 */}
           <div className="animate-fade-in-up delay-100">
-            <a
+            <Link
               href="/"
               className="flex items-center gap-2 px-4 py-2.5 border-3 border-black shadow-brutal-sm hover-lift text-sm min-h-[44px]"
               style={{ backgroundColor: "#fff", color: "#2a1810" }}
             >
               <span>🏠</span>
               홈
-            </a>
+            </Link>
           </div>
 
           {/* 우측: SNS */}

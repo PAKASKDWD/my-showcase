@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 interface NavCardProps {
   title: string;
   emoji: string;
@@ -21,14 +23,14 @@ export default function NavCard({
 }: NavCardProps) {
   return (
     <div className={`tooltip-wrapper relative animate-pop-in ${delay}`}>
-      <a
+      <Link
         href={href}
         className="btn-card hover-lift flex items-center gap-3 px-5 py-4 border-3 border-black shadow-brutal text-white text-sm md:text-base"
         style={{ backgroundColor: color }}
       >
         <span className="btn-icon text-lg">{emoji}</span>
         <span>{title}</span>
-      </a>
+      </Link>
       <div className={`game-tooltip tooltip-${tooltipPosition}`}>
         <div style={{ color: "#FFD700", fontSize: "14px", marginBottom: "6px", textShadow: "1px 1px 0px #000" }}>
           {emoji} {title}
