@@ -191,6 +191,10 @@ body {
   border-left-color: #8B4513;
 }
 
+.tooltip-wrapper:hover {
+  z-index: 50;
+}
+
 .tooltip-wrapper:hover .game-tooltip {
   opacity: 1;
   visibility: visible;
