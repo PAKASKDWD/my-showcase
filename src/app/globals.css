@@ -26,6 +26,19 @@ body {
   overflow: hidden;
 }
 
+/* 히어로 영역 */
+.home-hero {
+  height: 100vh;
+  height: 100dvh;
+  padding-top: 70px;
+}
+
+@media (min-width: 768px) {
+  .home-hero {
+    padding-top: 0;
+  }
+}
+
 /* 브루탈리즘 그림자 */
 .shadow-brutal {
   box-shadow: 4px 4px 0px #000;
