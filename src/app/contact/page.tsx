@@ -7,6 +7,7 @@ const contacts = [
     href: "https://github.com",
     emoji: "💻",
     color: "#333",
+    delay: "delay-200",
   },
   {
     label: "Email",
@@ -14,6 +15,7 @@ const contacts = [
     href: "mailto:hello@example.com",
     emoji: "📧",
     color: "#EA4335",
+    delay: "delay-300",
   },
   {
     label: "Blog",
@@ -21,6 +23,7 @@ const contacts = [
     href: "#",
     emoji: "📝",
     color: "#2a1810",
+    delay: "delay-400",
   },
 ];
 
@@ -53,7 +56,7 @@ export default function ContactPage() {
               href={contact.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`btn-card hover-lift flex items-center gap-4 border-3 border-black p-5 animate-fade-in-up delay-${(i + 2) * 100}`}
+              className={`btn-card hover-lift flex items-center gap-4 border-3 border-black p-5 shadow-brutal animate-fade-in-up ${contact.delay}`}
               style={{ backgroundColor: "#fff" }}
             >
               <div

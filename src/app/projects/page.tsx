@@ -7,6 +7,7 @@ const projects = [
     tags: ["Next.js", "TypeScript"],
     color: "#6BCB77",
     link: "#",
+    delay: "delay-200",
   },
   {
     title: "프로젝트 2",
@@ -14,6 +15,7 @@ const projects = [
     tags: ["React", "Tailwind"],
     color: "#4D96FF",
     link: "#",
+    delay: "delay-300",
   },
   {
     title: "프로젝트 3",
@@ -21,6 +23,7 @@ const projects = [
     tags: ["Spring Boot", "PostgreSQL"],
     color: "#FFD93D",
     link: "#",
+    delay: "delay-400",
   },
 ];
 
@@ -52,7 +55,7 @@ export default function ProjectsPage() {
             <a
               key={project.title}
               href={project.link}
-              className={`btn-card hover-lift border-3 border-black p-5 animate-fade-in-up delay-${(i + 2) * 100}`}
+              className={`btn-card hover-lift border-3 border-black p-5 shadow-brutal animate-fade-in-up ${project.delay}`}
               style={{ backgroundColor: "#fff" }}
             >
               <div className="flex items-start gap-4">

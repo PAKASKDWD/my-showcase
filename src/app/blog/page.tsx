@@ -6,12 +6,14 @@ const posts = [
     date: "2026-04-06",
     summary: "블로그 글 요약을 여기에 적어주세요.",
     tag: "개발",
+    delay: "delay-200",
   },
   {
     title: "두 번째 글 제목",
     date: "2026-04-05",
     summary: "블로그 글 요약을 여기에 적어주세요.",
     tag: "일상",
+    delay: "delay-300",
   },
 ];
 
@@ -41,7 +43,7 @@ export default function BlogPage() {
           {posts.map((post, i) => (
             <article
               key={post.title}
-              className={`btn-card hover-lift border-3 border-black p-5 animate-fade-in-up delay-${(i + 2) * 100}`}
+              className={`btn-card hover-lift border-3 border-black p-5 shadow-brutal animate-fade-in-up ${post.delay}`}
               style={{ backgroundColor: "#fff" }}
             >
               <div className="flex items-center gap-2 mb-2">
