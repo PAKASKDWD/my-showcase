@@ -1,65 +1,92 @@
-import Image from "next/image";
+import PixelCharacter from "@/components/PixelCharacter";
+import SnsButtons from "@/components/SnsButtons";
+import NavCard from "@/components/NavCard";
+
+const navCards = [
+  {
+    title: "프로젝트",
+    emoji: "🖼️",
+    description: "직접 만든 프로젝트들을 구경하세요!",
+    color: "#6BAF8D",
+    href: "/projects",
+    tooltipPosition: "right" as const,
+    delay: "delay-300",
+  },
+  {
+    title: "소개",
+    emoji: "👋",
+    description: "저는 이런 사람이에요!",
+    color: "#E8785E",
+    href: "/about",
+    tooltipPosition: "right" as const,
+    delay: "delay-400",
+  },
+  {
+    title: "블로그",
+    emoji: "📝",
+    description: "개발 이야기와 경험을 공유합니다!",
+    color: "#E8A87C",
+    href: "/blog",
+    tooltipPosition: "left" as const,
+    delay: "delay-500",
+  },
+  {
+    title: "연락하기",
+    emoji: "💌",
+    description: "궁금한 점이 있으면 연락주세요!",
+    color: "#7BA7C9",
+    href: "/contact",
+    tooltipPosition: "left" as const,
+    delay: "delay-600",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <div className="home-hero flex flex-col items-center justify-center relative px-4">
+      {/* 상단 UI */}
+      <div className="fixed top-0 left-0 right-0 z-50 px-3 py-2 md:px-4 md:py-4">
+        <div className="flex justify-between items-start">
+          {/* 좌측: 홈 */}
+          <div className="animate-fade-in-up delay-100">
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="/"
+              className="flex items-center gap-2 px-4 py-2 border-3 border-black shadow-brutal-sm hover-lift text-sm"
+              style={{ backgroundColor: "#fff", color: "#2a1810" }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              <span>🏠</span>
+              홈
+            </a>
+          </div>
+
+          {/* 우측: SNS */}
+          <SnsButtons />
+        </div>
+      </div>
+
+      {/* 메인 컨텐츠 */}
+      <div className="flex flex-col items-center gap-6">
+        {/* 캐릭터 */}
+        <div className="animate-pop-in delay-200">
+          <PixelCharacter />
+        </div>
+
+        {/* 타이틀 */}
+        <div className="text-center animate-fade-in-up delay-300">
+          <h1 className="text-3xl md:text-4xl mb-2">마이 쇼케이스</h1>
+          <p className="text-base md:text-lg opacity-70">
+            내가 만든 것들을 모아놓은 공간
+            <span className="typing-cursor" />
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* 네비게이션 카드 */}
+        <div className="grid grid-cols-2 gap-3 md:gap-4 mt-4">
+          {navCards.map((card) => (
+            <NavCard key={card.title} {...card} />
+          ))}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

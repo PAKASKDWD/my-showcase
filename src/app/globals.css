@@ -1,26 +1,240 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-warm-bg: #f3e4da;
+  --color-warm-dark: #2a1810;
+  --color-warm-brown: #8B4513;
+  --color-warm-gold: #FFD700;
+  --color-warm-wheat: #F5DEB3;
+  --color-card-class: #E8785E;
+  --color-card-showcase: #6BAF8D;
+  --color-card-blog: #E8A87C;
+  --color-card-tutorial: #7BA7C9;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 픽셀 폰트 */
+@font-face {
+  font-family: "NeoDunggeunmo";
+  src: url("https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/neodgm.woff2") format("woff2");
+  font-display: swap;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "NeoDunggeunmo", monospace;
+  background-color: var(--color-warm-bg);
+  color: var(--color-warm-dark);
+  overflow: hidden;
 }
+
+/* 브루탈리즘 그림자 */
+.shadow-brutal {
+  box-shadow: 4px 4px 0px #000;
+}
+
+.shadow-brutal-sm {
+  box-shadow: 2px 2px 0px #000;
+}
+
+/* 호버 리프트 효과 */
+.hover-lift {
+  transition: all 0.2s ease-out;
+}
+.hover-lift:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px #000;
+}
+
+/* 입장 애니메이션 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes iconShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-pop-in {
+  animation: popIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: currentColor;
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+/* 카드 버튼 hover 시 아이콘 흔들림 */
+.btn-card:hover .btn-icon {
+  animation: iconShake 0.4s ease-in-out;
+}
+
+/* 카드 버튼 빛 반사 효과 */
+.btn-card {
+  position: relative;
+  overflow: hidden;
+}
+.btn-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+.btn-card:hover::before {
+  left: 100%;
+}
+
+/* 게임 스타일 툴팁 */
+.game-tooltip {
+  position: absolute;
+  background: #2a1810;
+  border: 3px solid #8B4513;
+  padding: 12px 16px;
+  width: max-content;
+  max-width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.tooltip-right {
+  left: calc(100% + 15px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tooltip-right::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 8px solid transparent;
+  border-right-color: #8B4513;
+}
+
+.tooltip-left {
+  right: calc(100% + 15px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tooltip-left::before {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 8px solid transparent;
+  border-left-color: #8B4513;
+}
+
+.tooltip-wrapper:hover .game-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* SNS 버튼 확장 효과 */
+.sns-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #000;
+  overflow: hidden;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              gap 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.2s ease-out,
+              box-shadow 0.2s ease-out;
+  box-shadow: 2px 2px 0px #000;
+}
+
+@media (min-width: 768px) {
+  .sns-btn {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+  }
+  .sns-btn:hover {
+    width: 120px;
+    padding-right: 12px;
+    gap: 8px;
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #000;
+  }
+  .sns-btn:hover .sns-label {
+    opacity: 1;
+    max-width: 100px;
+  }
+}
+
+.sns-label {
+  font-size: 11px;
+  font-weight: bold;
+  white-space: nowrap;
+  opacity: 0;
+  max-width: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 지연 애니메이션 */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
